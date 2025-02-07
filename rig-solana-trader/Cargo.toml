@@ -1,0 +1,77 @@
+[package]
+name = "rig-solana-trader"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# Framework
+rig-core = { path = "../rig-core", features = ["derive", "pdf", "all"] }
+rig-mongodb = { path = "../rig-mongodb", default-features = false }
+
+# Core dependencies
+tokio = { workspace = true }
+anyhow = "1.0"
+thiserror = "1.0"
+async-trait = "0.1"
+futures = "0.3"
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Time handling
+chrono = { version = "0.4", features = ["serde"] }
+
+# Environment
+dotenv = "0.15"
+
+# HTTP client
+reqwest = { version = "0.11", features = ["json"] }
+
+# Utilities
+uuid = { version = "1.0", features = ["v4", "serde"] }
+base64 = "0.21"
+rand = "0.8"
+
+# Solana - pinning to specific versions that work with tokio 1.14
+solana-sdk = "=1.14.18"
+solana-client = "=1.14.18"
+solana-program = "=1.14.18"
+anchor-client = "=0.26.0"
+anchor-lang = "=0.26.0"
+
+# CLI
+rustyline = "12.0"
+
+# Jupiter DEX
+jup-ag = "0.8"
+
+# Technical Analysis
+ta = "0.5"
+
+# Social media integration
+twitter-v2 = "0.1"
+oauth2 = "4.4"
+oauth1 = "1.0"
+
+# OpenAI
+openai = { version = "1.0.0-alpha.18" }
+
+# MongoDB
+mongodb = { version = "3.2.0", features = ["sync"] }
+bincode = "1.3.3"
+
+[dev-dependencies]
+tokio-test = "0.4"
+
+[[example]]
+name = "interactive_trader"
+path = "examples/interactive_trader.rs"
+
+[[example]]
+name = "autonomous_trader"
+path = "examples/autonomous_trader.rs"
